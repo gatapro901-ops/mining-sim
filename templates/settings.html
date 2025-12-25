@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+<meta charset="UTF-8">
+<title>الإعدادات</title>
+<style>
+body { font-family: Arial; direction: rtl; background:#fff; color:#000; padding:20px; }
+.container { max-width:600px; margin:auto; }
+input, select, button { width:100%; padding:10px; margin:10px 0; border:1px solid #ccc; border-radius:5px; font-size:16px; }
+.red { background:#e53935; color:white; border:none; }
+.blue { background:#1e88e5; color:white; border:none; }
+.green { background:#43a047; color:white; border:none; }
+.top-buttons { display:flex; justify-content:space-between; margin-bottom:15px; }
+.top-buttons button { width:48%; }
+.msg { color:red; font-weight:bold; }
+</style>
+</head>
+<body class="{{ 'dark' if user.theme == 'dark' else 'light' }}">
+
+<div class="container">
+
+    <div class="top-buttons">
+        <form method="GET" action="{{ url_for('dashboard') }}">
+            <button class="blue" type="submit">العودة للداش بورد</button>
+        </form>
+        <form method="GET" action="{{ url_for('logout') }}">
+            <button class="red" type="submit">تسجيل الخروج</button>
+        </form>
+    </div>
+
+    <h2>الإعدادات</h2>
+    
+    {% if msg %}
+        <div class="msg">{{ msg }}</div>
+    {% endif %}
+
+    <!-- تعديل اسم المستخدم -->
+    <form method="post" action="{{ url_for('settings') }}">
+        <label>اسم المستخدم:</label>
+        <input type="text" name="username" value="{{ user.username }}" required>
+
+        <label>كلمة السر:</label>
+        <input type="password" name="password" placeholder="أدخل كلمة السر الجديدة" value="{{ user.password }}" required>
+
+        <label>الثيم:</label>
+        <select name="theme">
+            <option value="light" {% if user.theme=='light' %}selected{% endif %}>فاتح</option>
+            <option value="dark" {% if user.theme=='dark' %}selected{% endif %}>داكن</option>
+        </select>
+
+        <button class="green" type="submit">حفظ التغييرات</button>
+    </form>
+
+    <hr>
+
+    <!-- حذف الحساب -->
+    <form method="post" action="{{ url_for('delete_my_account') }}" onsubmit="return confirm('هل أنت متأكد أنك تريد حذف حسابك نهائيًا؟ لا يمكنك التراجع.');">
+        <button class="red" type="submit">حذف الحساب نهائيًا</button>
+    </form>
+
+</div>
+
+</body>
+</html>

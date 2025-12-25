@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+<meta charset="UTF-8">
+<title>المهام</title>
+<style>
+body { font-family: Arial; background:#f4f4f4; color:#222; text-align:center; margin:0; padding:0; }
+.container { max-width:900px; margin:20px auto; padding:20px; background:#fff; border-radius:10px; box-shadow:0 0 10px rgba(0,0,0,0.1); }
+.task { padding:15px; margin:10px 0; border-radius:8px; border:1px solid #ccc; transition:0.3s; cursor:pointer; }
+.task.completed { background:#2ecc71; color:#fff; border-color:#27ae60; }
+.task.pending { background:#f1c40f; color:#222; border-color:#f39c12; }
+.task h3 { margin:0 0 5px 0; }
+.task p { margin:5px 0; }
+#msg-box { display:none; padding:12px; margin:15px auto; width:90%; border-radius:8px; font-size:18px; font-weight:bold; }
+.msg-success { background:#2ecc71; color:#fff; }
+.msg-info { background:#3498db; color:#fff; }
+a { text-decoration:none; color:#3498db; font-weight:bold; }
+a:hover { text-decoration:underline; }
+</style>
+</head>
+<body>
+
+<h2>مهامك اليومية</h2>
+<a href="{{ url_for('dashboard') }}">🏠 العودة للداشبورد</a>
+
+<div id="msg-box"></div>
+
+<div class="container">
+    {% for task in tasks %}
+    <div class="task {{ 'completed' if task['completed'] else 'pending' }}"
+        data-condition="{{ task['condition'] }}"
+        id="task-{{ loop.index0 }}">
+
+        <h3>{{ task['title'] }}</h3>
+
+        <p>المكافأة: {{ task['reward'] }} 
+            {{ 'ساتوشي' if task['type']=='btc' else 'XP' }}
+        </p>
+
+        <p>الحالة: 
+            <span id="status-{{ loop.index0 }}">
+                {{ 'مكتملة ✅' if task['completed'] else 'قيد التنفيذ ⏳' }}
+            </span>
+        </p>
+
+    </div>
+    {% endfor %}
+</div>
+
+<script>
+function showMessage(message, success=true){
+    const box = document.getElementById("msg-box");
+    box.innerText = message;
+    box.classList.remove("msg-success","msg-info");
+    box.classList.add(success ? "msg-success" : "msg-info");
+    box.style.display = "block";
+    setTimeout(()=>{ box.style.display="none"; },3000);
+}
+
+document.querySelectorAll('.task').forEach(task => {
+    task.addEventListener('click', ()=>{
+        const condition = task.getAttribute('data-condition');
+        fetch(`/complete_task/${condition}`)
+        .then(res => res.json())
+        .then(data=>{
+            if(data.ok){
+                task.classList.remove('pending');
+                task.classList.add('completed');
+                const status = task.querySelector('span');
+                if(status) status.innerText = "مكتملة ✅";
+            }
+            showMessage(data.msg, data.ok);
+        });
+    });
+});
+
+window.addEventListener('load', ()=>{
+    fetch('/tasks_status')
+    .then(res => res.json())
+    .then(data => {
+        if(data.tasks){
+            data.tasks.forEach((t, idx)=>{
+                const taskDiv = document.getElementById(`task-${idx}`);
+                if(taskDiv && t.completed){
+                    taskDiv.classList.remove('pending');
+                    taskDiv.classList.add('completed');
+                    const status = taskDiv.querySelector('span');
+                    if(status) status.innerText = "مكتملة ✅";
+                }
+            });
+        }
+    });
+});
+</script>
+
+</body>
+</html>

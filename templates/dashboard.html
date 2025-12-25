@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+<meta charset="UTF-8">
+<title>Dashboard</title>
+<style>
+body { font-family: Arial; transition: background 0.3s, color 0.3s; }
+body.light { background:#fff; color:#000; }
+body.dark { background:#111; color:#fff; }
+button { padding:10px 20px; margin:5px; border:none; border-radius:5px; cursor:pointer; font-size:16px; }
+.green { background:#4CAF50; color:white; }
+.red { background:#f44336; color:white; }
+.blue { background:#2196F3; color:white; }
+.yellow { background:#f1c40f; color:#222; }
+.container { display:flex; justify-content:space-between; padding:20px; }
+.left { width:65%; }
+.right { width:30%; }
+table { width:100%; border-collapse: collapse; margin-top:10px; }
+th, td { border:1px solid #ccc; padding:8px; text-align:center; }
+#tasks-btn { position:relative; }
+#tasks-count { position:absolute; top:-8px; right:-8px; background:red; color:white; font-size:12px; padding:2px 6px; border-radius:50%; }
+</style>
+<script>
+let miningInterval = null;
+let balanceHistory = [];
+
+function startMining(){
+    fetch('/start_mining').then(res=>res.json()).then(data=>{
+        if(!data.ok){ alert(data.msg||"حدث خطأ"); return; }
+        alert(data.msg||"تم بدء التعدين");
+        if(miningInterval) return;
+        miningInterval = setInterval(updateStats, 3000);
+    });
+}
+
+function stopMining(){
+    fetch('/stop_mining').then(res=>res.json()).then(data=>{
+        alert(data.msg||"تم إيقاف التعدين");
+        if(miningInterval){ clearInterval(miningInterval); miningInterval=null; }
+        updateStats();
+    });
+}
+
+function updateTasksCount(){
+    fetch('/pending_tasks_count').then(res=>res.json()).then(data=>{
+        if(data.ok) document.getElementById('tasks-count').innerText=data.count;
+    });
+}
+
+function updateStats(){
+    fetch('/mining_tick').then(res=>res.json()).then(data=>{
+        if(data.ok){
+            document.getElementById('balance').innerText = data.balance.toFixed(8);
+            document.getElementById('xp').innerText = data.xp;
+            document.getElementById('rank').innerText = data.rank;
+            updateChart(data.balance);
+        }
+    });
+}
+
+function drawChart(){
+    const canvas = document.getElementById('chart');
+    const ctx = canvas.getContext('2d');
+    ctx.clearRect(0,0,canvas.width,canvas.height);
+
+    const barWidth = 20;
+    const gap = 10;
+    const maxBalance = Math.max(...balanceHistory, 0.00000001);
+
+    balanceHistory.forEach((bal,i)=>{
+        const prev = balanceHistory[i-1]||bal;
+        const height = (bal/maxBalance)*150;
+        const x = 10 + i*(barWidth+gap);
+        const y = 180-height;
+
+        ctx.fillStyle = bal>=prev?'#4CAF50':'#f44336';
+
+        ctx.beginPath();
+        if(bal>=prev){
+            ctx.moveTo(x+barWidth/2, y);
+            ctx.lineTo(x, 180);
+            ctx.lineTo(x+barWidth, 180);
+        } else {
+            ctx.moveTo(x+barWidth/2, 180);
+            ctx.lineTo(x, y);
+            ctx.lineTo(x+barWidth, y);
+        }
+        ctx.closePath();
+        ctx.fill();
+
+        ctx.fillStyle='#000';
+        ctx.font='12px Arial';
+        ctx.fillText(bal.toFixed(8), x, y-5);
+    });
+}
+
+function updateChart(balance){
+    balanceHistory.push(balance);
+    if(balanceHistory.length>10) balanceHistory.shift();
+    drawChart();
+}
+
+window.addEventListener('load', ()=>{
+    updateTasksCount();
+    setInterval(updateTasksCount,60000);
+    updateChart({{ "%.8f"|format(user.balance) }});
+});
+</script>
+</head>
+<body class="{{ 'dark' if user.theme=='dark' else 'light' }}">
+<h2>مرحبا {{ user.username }}!</h2>
+
+<div style="text-align:center;">
+    <a target="_blank" href="https://faucetcrypto.com/r/10018485">
+        <img src="https://faucetcrypto.com/img/banners/728x90_minimalist.gif" width="728" height="90">
+    </a>
+</div>
+
+<div class="container">
+    <div class="left">
+        <div>
+            <button class="green" onclick="startMining()">بدأ التعدين</button>
+            <button class="red" onclick="stopMining()">إيقاف التعدين</button>
+            <button onclick="location.href='/withdraw'">سحب الرصيد</button>
+            <button class="blue" onclick="location.href='/settings'">الإعدادات</button>
+            <button class="yellow" id="tasks-btn" onclick="location.href='/tasks'">
+                المهام <span id="tasks-count">0</span>
+            </button>
+            <button class="yellow" onclick="location.href='/items'">أجهزتي</button>
+            {% if user.username=='gatapro901' %}
+            <button class="red" onclick="location.href='/admin'">الأدمن</button>
+            {% endif %}
+            <button onclick="location.href='/store'">المتجر</button>
+        </div>
+
+        <div style="margin-top:20px;">
+            <h3>الرصيد: <span id="balance">{{ "%.8f"|format(user.balance) }}</span> ساتوشي</h3>
+            <h3>XP: <span id="xp">{{ user.xp }}</span></h3>
+            <h3>Rank: <span id="rank">{{ user.rank }}</span></h3>
+        </div>
+
+        <canvas id="chart" width="600" height="200" style="border:1px solid #ccc; margin-top:20px;"></canvas>
+    </div>
+
+    <div class="right">
+        <h3>المعدنين</h3>
+        <table>
+            <tr><th>الترتيب</th><th>الاسم</th><th>الرصيد</th></tr>
+            {% for u in users %}
+            <tr>
+                <td>{{ loop.index }}</td>
+                <td>{{ u.username }}</td>
+                <td>{{ "%.8f"|format(u.balance) }}</td>
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
+</div>
+
+{% with messages = get_flashed_messages() %}
+  {% if messages %}
+    <ul class="flash-messages">
+      {% for message in messages %}
+        <li>{{ message }}</li>
+      {% endfor %}
+    </ul>
+  {% endif %}
+{% endwith %}
+</body>
+</html>

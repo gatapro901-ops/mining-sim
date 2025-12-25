@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+<meta charset="UTF-8">
+<title>أجهزتك</title>
+<style>
+body { font-family: Arial; background:#222; color:#fff; text-align:center; }
+.container { max-width:800px; margin:auto; }
+.item-box { background:#333; padding:15px; margin:15px 0; border-radius:8px; }
+button { padding:8px 12px; border:none; border-radius:5px; cursor:pointer; margin:5px; }
+button.start { background:green; color:white; }
+button.start:hover { background:#2ecc71; }
+button.stop { background:red; color:white; }
+button.stop:hover { background:#e74c3c; }
+a { color:#1abc9c; text-decoration:none; }
+a:hover { text-decoration:underline; }
+
+/* صندوق الرسائل */
+#msg-box {
+    display:none;
+    padding:12px;
+    margin:15px auto;
+    width:90%;
+    border-radius:8px;
+    text-align:center;
+    font-size:18px;
+    font-weight:bold;
+}
+
+.msg-on  { background:#2ecc71; color:#fff; }
+.msg-off { background:#e74c3c; color:#fff; }
+</style>
+</head>
+<body>
+
+<h2>أجهزتك</h2>
+<a href="{{ url_for('dashboard') }}">🏠 العودة للداشبورد</a>
+
+<div id="msg-box"></div>
+
+<div class="container">
+    {% for item in items %}
+    <div class="item-box" id="item-{{ item.id }}">
+        <h3>{{ item.name }}</h3>
+        <p>الإنتاج: {{ item.sat_per_cycle }} ساتوشي كل {{ item.interval }} ثانية</p>
+
+        <!-- زر تشغيل/إيقاف الجهاز -->
+        <button id="power-{{ item.id }}"
+            class="{{ 'stop' if item.power_on else 'start' }}"
+            onclick="togglePower('{{ item.id }}')">
+            {{ 'إيقاف الجهاز' if item.power_on else 'تشغيل الجهاز' }}
+        </button>
+    </div>
+    {% endfor %}
+</div>
+
+<script>
+function togglePower(itemId) {
+    fetch(`/toggle_power/${itemId}`)
+    .then(res => res.json())
+    .then(data => {
+        const box = document.getElementById("msg-box");
+        box.innerText = data.message;
+        box.classList.remove("msg-on","msg-off");
+        box.classList.add(data.active ? "msg-on" : "msg-off");
+        box.style.display = "block";
+        setTimeout(() => { box.style.display = "none"; }, 3000);
+
+        const btn = document.getElementById(`power-${itemId}`);
+        if (data.active) {
+            btn.classList.remove('start');
+            btn.classList.add('stop');
+            btn.innerText = 'إيقاف الجهاز';
+        } else {
+            btn.classList.remove('stop');
+            btn.classList.add('start');
+            btn.innerText = 'تشغيل الجهاز';
+        }
+    });
+}
+</script>
+
+</body>
+</html>

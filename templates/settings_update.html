@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+<meta charset="UTF-8">
+<title>الإعدادات</title>
+<style>
+body { font-family: Arial; direction: rtl; background:#fff; color:#000; padding:20px; }
+.container { max-width:600px; margin:auto; }
+input, select, button { width:100%; padding:10px; margin:10px 0; border:1px solid #ccc; border-radius:5px; font-size:16px; }
+.red { background:#e53935; color:white; border:none; }
+.blue { background:#1e88e5; color:white; border:none; }
+.green { background:#43a047; color:white; border:none; }
+.btn-back { background:#888; color:white; border:none; }
+.msg-box { color: red; margin-bottom:10px; }
+</style>
+</head>
+<body class="{{ 'dark' if user.theme == 'dark' else 'light' }}">
+
+<div class="container">
+    <h2>الإعدادات</h2>
+
+    {% if msg %}
+    <div class="msg-box">{{ msg }}</div>
+    {% endif %}
+
+    <!-- تعديل البيانات -->
+    <form method="post">
+        <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+        <label>اسم المستخدم:</label>
+        <input type="text" name="username" value="{{ user.username }}" required>
+
+        <label>كلمة السر الجديدة:</label>
+        <input type="password" name="password" placeholder="ادخل كلمة السر الجديدة">
+
+        <label>الثيم:</label>
+        <select name="theme">
+            <option value="light" {% if user.theme == 'light' %}selected{% endif %}>فاتح</option>
+            <option value="dark" {% if user.theme == 'dark' %}selected{% endif %}>داكن</option>
+        </select>
+
+        <button class="green" type="submit">حفظ التغييرات</button>
+    </form>
+
+    <hr>
+
+    <!-- زر العودة للداش بورد -->
+    <button class="btn-back" onclick="location.href='/dashboard'">العودة للداش بورد</button>
+
+    <hr>
+
+    <!-- حذف الحساب -->
+    <form method="post" action="/delete_my_account" onsubmit="return confirm('هل أنت متأكد أنك تريد حذف حسابك نهائيًا؟ لا يمكنك التراجع.');">
+        <button class="red" type="submit">حذف الحساب نهائيًا</button>
+    </form>
+</div>
+
+</body>
+</html>

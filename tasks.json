@@ -1,0 +1,593 @@
+{
+    "gatapro901": [
+        {
+            "title": "أول تسجيل الدخول",
+            "reward": 6e-08,
+            "type": "btc",
+            "condition": "first_login",
+            "completed": true,
+            "last_done": "2025-11-25"
+        },
+        {
+            "title": "اشتري ثلاثة أجهزة",
+            "reward": 2e-07,
+            "type": "btc",
+            "condition": "buy_3_items",
+            "completed": false
+        },
+        {
+            "title": "اشتري خمسة أجهزة",
+            "reward": 1e-06,
+            "type": "btc",
+            "condition": "buy_5_items",
+            "completed": false
+        },
+        {
+            "title": "اشتري عشرة أجهزة",
+            "reward": 1.75e-06,
+            "type": "btc",
+            "condition": "buy_10_items",
+            "completed": false
+        },
+        {
+            "title": "اشتري عشرون جهاز",
+            "reward": 2.5e-06,
+            "type": "btc",
+            "condition": "buy_20_items",
+            "completed": false
+        },
+        {
+            "title": "اشتري ثلاثون جهاز",
+            "reward": 3.25e-06,
+            "type": "btc",
+            "condition": "buy_30_items",
+            "completed": false
+        },
+        {
+            "title": "اشتري خمسون جهاز",
+            "reward": 5e-06,
+            "type": "btc",
+            "condition": "buy_50_items",
+            "completed": false
+        },
+        {
+            "title": "اشتري مائة جهاز",
+            "reward": 1e-05,
+            "type": "btc",
+            "condition": "buy_100_items",
+            "completed": false
+        },
+        {
+            "title": "سجل الدخول يوميا لمدة أسبوع",
+            "reward": 900,
+            "type": "xp",
+            "condition": "login_7_days",
+            "completed": false
+        },
+        {
+            "title": "سجل الدخول يوميا لمدة شهر",
+            "reward": 5000,
+            "type": "xp",
+            "condition": "login_30_days",
+            "completed": false
+        }
+    ],
+    "O": [
+        {
+            "title": "أول تسجيل الدخول",
+            "reward": 6e-08,
+            "type": "btc",
+            "condition": "first_login",
+            "completed": true,
+            "last_done": "2025-11-25"
+        },
+        {
+            "title": "اشتري ثلاثة أجهزة",
+            "reward": 2e-07,
+            "type": "btc",
+            "condition": "buy_3_items",
+            "completed": false
+        },
+        {
+            "title": "اشتري خمسة أجهزة",
+            "reward": 1e-06,
+            "type": "btc",
+            "condition": "buy_5_items",
+            "completed": false
+        },
+        {
+            "title": "اشتري عشرة أجهزة",
+            "reward": 1.75e-06,
+            "type": "btc",
+            "condition": "buy_10_items",
+            "completed": false
+        },
+        {
+            "title": "اشتري عشرون جهاز",
+            "reward": 2.5e-06,
+            "type": "btc",
+            "condition": "buy_20_items",
+            "completed": false
+        },
+        {
+            "title": "اشتري ثلاثون جهاز",
+            "reward": 3.25e-06,
+            "type": "btc",
+            "condition": "buy_30_items",
+            "completed": false
+        },
+        {
+            "title": "اشتري خمسون جهاز",
+            "reward": 5e-06,
+            "type": "btc",
+            "condition": "buy_50_items",
+            "completed": false
+        },
+        {
+            "title": "اشتري مائة جهاز",
+            "reward": 1e-05,
+            "type": "btc",
+            "condition": "buy_100_items",
+            "completed": false
+        },
+        {
+            "title": "سجل الدخول يوميا لمدة أسبوع",
+            "reward": 900,
+            "type": "xp",
+            "condition": "login_7_days",
+            "completed": false
+        },
+        {
+            "title": "سجل الدخول يوميا لمدة شهر",
+            "reward": 5000,
+            "type": "xp",
+            "condition": "login_30_days",
+            "completed": false
+        }
+    ],
+    "Yes": [
+        {
+            "title": "أول تسجيل الدخول",
+            "reward": 6e-08,
+            "type": "btc",
+            "condition": "first_login",
+            "completed": true,
+            "last_done": "2025-11-25"
+        },
+        {
+            "title": "اشتري ثلاثة أجهزة",
+            "reward": 2e-07,
+            "type": "btc",
+            "condition": "buy_3_items",
+            "completed": true,
+            "last_done": "2025-11-25"
+        },
+        {
+            "title": "اشتري خمسة أجهزة",
+            "reward": 1e-06,
+            "type": "btc",
+            "condition": "buy_5_items",
+            "completed": true,
+            "last_done": "2025-11-25"
+        },
+        {
+            "title": "اشتري عشرة أجهزة",
+            "reward": 1.75e-06,
+            "type": "btc",
+            "condition": "buy_10_items",
+            "completed": false
+        },
+        {
+            "title": "اشتري عشرون جهاز",
+            "reward": 2.5e-06,
+            "type": "btc",
+            "condition": "buy_20_items",
+            "completed": false
+        },
+        {
+            "title": "اشتري ثلاثون جهاز",
+            "reward": 3.25e-06,
+            "type": "btc",
+            "condition": "buy_30_items",
+            "completed": false
+        },
+        {
+            "title": "اشتري خمسون جهاز",
+            "reward": 5e-06,
+            "type": "btc",
+            "condition": "buy_50_items",
+            "completed": false
+        },
+        {
+            "title": "اشتري مائة جهاز",
+            "reward": 1e-05,
+            "type": "btc",
+            "condition": "buy_100_items",
+            "completed": false
+        },
+        {
+            "title": "سجل الدخول يوميا لمدة أسبوع",
+            "reward": 900,
+            "type": "xp",
+            "condition": "login_7_days",
+            "completed": false
+        },
+        {
+            "title": "سجل الدخول يوميا لمدة شهر",
+            "reward": 5000,
+            "type": "xp",
+            "condition": "login_30_days",
+            "completed": false
+        }
+    ],
+    "Omar": [
+        {
+            "title": "أول تسجيل الدخول",
+            "reward": 6e-08,
+            "type": "btc",
+            "condition": "first_login",
+            "completed": true,
+            "last_done": "2025-11-25"
+        },
+        {
+            "title": "اشتري ثلاثة أجهزة",
+            "reward": 2e-07,
+            "type": "btc",
+            "condition": "buy_3_items",
+            "completed": false
+        },
+        {
+            "title": "اشتري خمسة أجهزة",
+            "reward": 1e-06,
+            "type": "btc",
+            "condition": "buy_5_items",
+            "completed": false
+        },
+        {
+            "title": "اشتري عشرة أجهزة",
+            "reward": 1.75e-06,
+            "type": "btc",
+            "condition": "buy_10_items",
+            "completed": false
+        },
+        {
+            "title": "اشتري عشرون جهاز",
+            "reward": 2.5e-06,
+            "type": "btc",
+            "condition": "buy_20_items",
+            "completed": false
+        },
+        {
+            "title": "اشتري ثلاثون جهاز",
+            "reward": 3.25e-06,
+            "type": "btc",
+            "condition": "buy_30_items",
+            "completed": false
+        },
+        {
+            "title": "اشتري خمسون جهاز",
+            "reward": 5e-06,
+            "type": "btc",
+            "condition": "buy_50_items",
+            "completed": false
+        },
+        {
+            "title": "اشتري مائة جهاز",
+            "reward": 1e-05,
+            "type": "btc",
+            "condition": "buy_100_items",
+            "completed": false
+        },
+        {
+            "title": "سجل الدخول يوميا لمدة أسبوع",
+            "reward": 900,
+            "type": "xp",
+            "condition": "login_7_days",
+            "completed": false
+        },
+        {
+            "title": "سجل الدخول يوميا لمدة شهر",
+            "reward": 5000,
+            "type": "xp",
+            "condition": "login_30_days",
+            "completed": false
+        }
+    ],
+    "A": [
+        {
+            "title": "أول تسجيل الدخول",
+            "reward": 6e-08,
+            "type": "btc",
+            "condition": "first_login",
+            "completed": true,
+            "last_done": "2025-11-26"
+        },
+        {
+            "title": "اشتري ثلاثة أجهزة",
+            "reward": 2e-07,
+            "type": "btc",
+            "condition": "buy_3_items",
+            "completed": false
+        },
+        {
+            "title": "اشتري خمسة أجهزة",
+            "reward": 1e-06,
+            "type": "btc",
+            "condition": "buy_5_items",
+            "completed": false
+        },
+        {
+            "title": "اشتري عشرة أجهزة",
+            "reward": 1.75e-06,
+            "type": "btc",
+            "condition": "buy_10_items",
+            "completed": false
+        },
+        {
+            "title": "اشتري عشرون جهاز",
+            "reward": 2.5e-06,
+            "type": "btc",
+            "condition": "buy_20_items",
+            "completed": false
+        },
+        {
+            "title": "اشتري ثلاثون جهاز",
+            "reward": 3.25e-06,
+            "type": "btc",
+            "condition": "buy_30_items",
+            "completed": false
+        },
+        {
+            "title": "اشتري خمسون جهاز",
+            "reward": 5e-06,
+            "type": "btc",
+            "condition": "buy_50_items",
+            "completed": false
+        },
+        {
+            "title": "اشتري مائة جهاز",
+            "reward": 1e-05,
+            "type": "btc",
+            "condition": "buy_100_items",
+            "completed": false
+        },
+        {
+            "title": "سجل الدخول يوميا لمدة أسبوع",
+            "reward": 900,
+            "type": "xp",
+            "condition": "login_7_days",
+            "completed": false
+        },
+        {
+            "title": "سجل الدخول يوميا لمدة شهر",
+            "reward": 5000,
+            "type": "xp",
+            "condition": "login_30_days",
+            "completed": false
+        }
+    ],
+    "Ali": [
+        {
+            "title": "أول تسجيل الدخول",
+            "reward": 6e-08,
+            "type": "btc",
+            "condition": "first_login",
+            "completed": true,
+            "last_done": "2025-11-26"
+        },
+        {
+            "title": "اشتري ثلاثة أجهزة",
+            "reward": 2e-07,
+            "type": "btc",
+            "condition": "buy_3_items",
+            "completed": false
+        },
+        {
+            "title": "اشتري خمسة أجهزة",
+            "reward": 1e-06,
+            "type": "btc",
+            "condition": "buy_5_items",
+            "completed": false
+        },
+        {
+            "title": "اشتري عشرة أجهزة",
+            "reward": 1.75e-06,
+            "type": "btc",
+            "condition": "buy_10_items",
+            "completed": false
+        },
+        {
+            "title": "اشتري عشرون جهاز",
+            "reward": 2.5e-06,
+            "type": "btc",
+            "condition": "buy_20_items",
+            "completed": false
+        },
+        {
+            "title": "اشتري ثلاثون جهاز",
+            "reward": 3.25e-06,
+            "type": "btc",
+            "condition": "buy_30_items",
+            "completed": false
+        },
+        {
+            "title": "اشتري خمسون جهاز",
+            "reward": 5e-06,
+            "type": "btc",
+            "condition": "buy_50_items",
+            "completed": false
+        },
+        {
+            "title": "اشتري مائة جهاز",
+            "reward": 1e-05,
+            "type": "btc",
+            "condition": "buy_100_items",
+            "completed": false
+        },
+        {
+            "title": "سجل الدخول يوميا لمدة أسبوع",
+            "reward": 900,
+            "type": "xp",
+            "condition": "login_7_days",
+            "completed": false
+        },
+        {
+            "title": "سجل الدخول يوميا لمدة شهر",
+            "reward": 5000,
+            "type": "xp",
+            "condition": "login_30_days",
+            "completed": false
+        }
+    ],
+    "Om": [
+        {
+            "title": "أول تسجيل الدخول",
+            "reward": 6e-08,
+            "type": "btc",
+            "condition": "first_login",
+            "completed": true,
+            "last_done": "2025-11-26"
+        },
+        {
+            "title": "اشتري ثلاثة أجهزة",
+            "reward": 2e-07,
+            "type": "btc",
+            "condition": "buy_3_items",
+            "completed": true,
+            "last_done": "2025-11-26"
+        },
+        {
+            "title": "اشتري خمسة أجهزة",
+            "reward": 1e-06,
+            "type": "btc",
+            "condition": "buy_5_items",
+            "completed": true,
+            "last_done": "2025-11-26"
+        },
+        {
+            "title": "اشتري عشرة أجهزة",
+            "reward": 1.75e-06,
+            "type": "btc",
+            "condition": "buy_10_items",
+            "completed": false
+        },
+        {
+            "title": "اشتري عشرون جهاز",
+            "reward": 2.5e-06,
+            "type": "btc",
+            "condition": "buy_20_items",
+            "completed": false
+        },
+        {
+            "title": "اشتري ثلاثون جهاز",
+            "reward": 3.25e-06,
+            "type": "btc",
+            "condition": "buy_30_items",
+            "completed": false
+        },
+        {
+            "title": "اشتري خمسون جهاز",
+            "reward": 5e-06,
+            "type": "btc",
+            "condition": "buy_50_items",
+            "completed": false
+        },
+        {
+            "title": "اشتري مائة جهاز",
+            "reward": 1e-05,
+            "type": "btc",
+            "condition": "buy_100_items",
+            "completed": false
+        },
+        {
+            "title": "سجل الدخول يوميا لمدة أسبوع",
+            "reward": 900,
+            "type": "xp",
+            "condition": "login_7_days",
+            "completed": false
+        },
+        {
+            "title": "سجل الدخول يوميا لمدة شهر",
+            "reward": 5000,
+            "type": "xp",
+            "condition": "login_30_days",
+            "completed": false
+        }
+    ],
+    "Jay": [
+        {
+            "title": "أول تسجيل الدخول",
+            "reward": 6e-08,
+            "type": "btc",
+            "condition": "first_login",
+            "completed": true,
+            "last_done": "2025-11-26"
+        },
+        {
+            "title": "اشتري ثلاثة أجهزة",
+            "reward": 2e-07,
+            "type": "btc",
+            "condition": "buy_3_items",
+            "completed": true,
+            "last_done": "2025-11-26"
+        },
+        {
+            "title": "اشتري خمسة أجهزة",
+            "reward": 1e-06,
+            "type": "btc",
+            "condition": "buy_5_items",
+            "completed": true,
+            "last_done": "2025-11-26"
+        },
+        {
+            "title": "اشتري عشرة أجهزة",
+            "reward": 1.75e-06,
+            "type": "btc",
+            "condition": "buy_10_items",
+            "completed": true,
+            "last_done": "2025-11-26"
+        },
+        {
+            "title": "اشتري عشرون جهاز",
+            "reward": 2.5e-06,
+            "type": "btc",
+            "condition": "buy_20_items",
+            "completed": false
+        },
+        {
+            "title": "اشتري ثلاثون جهاز",
+            "reward": 3.25e-06,
+            "type": "btc",
+            "condition": "buy_30_items",
+            "completed": false
+        },
+        {
+            "title": "اشتري خمسون جهاز",
+            "reward": 5e-06,
+            "type": "btc",
+            "condition": "buy_50_items",
+            "completed": false
+        },
+        {
+            "title": "اشتري مائة جهاز",
+            "reward": 1e-05,
+            "type": "btc",
+            "condition": "buy_100_items",
+            "completed": false
+        },
+        {
+            "title": "سجل الدخول يوميا لمدة أسبوع",
+            "reward": 900,
+            "type": "xp",
+            "condition": "login_7_days",
+            "completed": false
+        },
+        {
+            "title": "سجل الدخول يوميا لمدة شهر",
+            "reward": 5000,
+            "type": "xp",
+            "condition": "login_30_days",
+            "completed": false
+        }
+    ]
+}

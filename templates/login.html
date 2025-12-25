@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+<meta charset="UTF-8">
+<title>تسجيل الدخول</title>
+<style>
+body { background:#222; color:#fff; font-family: Arial; text-align:center; }
+.login-box { background:#333; padding:20px; margin:60px auto; width:330px; border-radius:10px; }
+input { width:90%; padding:10px; margin:10px 0; border:none; border-radius:6px; }
+button { width:95%; padding:10px; margin-top:10px; background:#27ae60; border:none; color:#fff; font-size:16px; border-radius:6px; }
+.green:hover { background:#1e8f4e; cursor:pointer; }
+.eye-btn { background:#555; color:white; border:none; padding:6px 8px; border-radius:5px; cursor:pointer; }
+.eye-btn:hover { background:#666; }
+.captcha-box { margin:10px 0; font-size:17px; background:#444; padding:8px; border-radius:6px; }
+.ad-box { text-align:center; margin-bottom:15px; }
+.ad-box img { border-radius:6px; }
+.register-link { margin-top:10px; display:block; color:#1abc9c; text-decoration:none; font-weight:bold; }
+.register-link:hover { color:#16a085; }
+</style>
+</head>
+<body>
+
+<div class="ad-box">
+    <a target="_blank" href="https://freebitco.in">
+        <img src="https://static1.freebitco.in/banners/728x90-3.png" width="728" height="90" alt="FreeBitco.in Banner">
+    </a>
+</div>
+
+<div class="login-box">
+<h2>تسجيل الدخول</h2>
+<form method="POST">
+<input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+    
+<input type="text" name="username" placeholder="اسم المستخدم" required>
+<input type="password" id="pass" name="password" placeholder="كلمة السر" required>
+<button type="button" class="eye-btn" onclick="togglePass()">👁 إظهار</button>
+
+<div class="captcha-box">
+حل العملية: {{ captcha }}
+</div>
+<input type="text" name="captcha" placeholder="أدخل الناتج" required>
+<input type="hidden" name="captcha_real" value="{{ captcha_real }}">
+<br>
+<button type="submit" class="green">تسجيل الدخول</button>
+</form>
+
+<a class="register-link" href="{{ url_for('register') }}">إنشاء حساب جديد</a>
+</div>
+
+<script>
+function togglePass() {
+    let p = document.getElementById("pass");
+    p.type = (p.type === "password") ? "text" : "password";
+}
+</script>
+</body>
+</html>

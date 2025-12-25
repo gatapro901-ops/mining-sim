@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+<meta charset="UTF-8">
+<title>مرحبا بك</title>
+<style>
+  body { background: #fff; color: #000; font-family: Arial, sans-serif; text-align: center; padding: 50px;}
+  button { padding: 15px 30px; margin: 10px; border: none; border-radius: 8px; font-size: 16px; cursor: pointer;}
+  .green { background: #4CAF50; color:white;}
+  .blue { background: #2196F3; color:white;}
+</style>
+</head>
+<body>
+<h1>Welcome to Mining pool simulator ⛏️ 👲</h1>
+<p>عدد المستخدمين: <span id="userCount">{{ count }}</span></p>
+<button class="green" onclick="location.href='/login'">تسجيل الدخول</button>
+<button class="blue" onclick="location.href='/register'">إنشاء الحساب</button>
+
+<script>
+function updateCount(){
+  fetch('/api/user_count').then(res=>res.json()).then(data=>{
+    document.getElementById('userCount').innerText=data.count;
+  });
+}
+setInterval(updateCount, 2000);
+</script>
+</body>
+</html>

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+<meta charset="UTF-8">
+<title>الأدمن المتقدمة</title>
+<style>
+body { font-family:Arial; background:#fff; color:#000; text-align:center; }
+table { margin:auto; border-collapse:collapse; width:95%; }
+th, td { border:1px solid #000; padding:8px; text-align:center; }
+button { margin:3px; padding:6px 10px; font-size:14px; }
+.green { background:#4CAF50; color:white; }
+.red { background:#f44336; color:white; }
+.blue { background:#2196F3; color:white; }
+input[type="text"], input[type="number"] { width:60px; text-align:center; }
+</style>
+</head>
+<body>
+<h2>الأدمن المتقدمة</h2>
+<table>
+<tr>
+<th>ID</th><th>اسم المستخدم</th><th>رصيد</th><th>XP</th><th>Rank</th><th>الحظر</th><th>تاريخ التسجيل</th><th>آخر دخول</th><th>إجراءات</th>
+</tr>
+{% for u in users %}
+<tr>
+<td>{{ loop.index }}</td>
+<td>{{ u.username }}</td>
+<td>{{ "%.8f"|format(u.balance) }}</td>
+<td>{{ u.xp }}</td>
+<td>{{ u.rank }}</td>
+<td>{{ "محظور" if u.blocked else "غير محظور" }}</td>
+<td>{{ u.get('created_at','---') }}</td>
+<td>{{ u.get('last_login','---') }}</td>
+<td>
+{% if u.username != 'gatapro901' %}
+    {% if u.blocked %}
+        <button class="green" onclick="location.href='/admin_unblock/{{ u.username }}'">رفع الحظر</button>
+    {% else %}
+        <button class="red" onclick="location.href='/admin_block/{{ u.username }}'">حظر</button>
+    {% endif %}
+    <button class="blue" onclick="location.href='/admin_delete/{{ u.username }}'">حذف</button>
+    <form action="/admin_update/{{ u.username }}" method="POST" style="margin-top:3px;">
+        <input type="text" name="balance" value="{{ u.balance }}">
+        <input type="number" name="xp" value="{{ u.xp }}">
+        <input type="text" name="rank" value="{{ u.rank }}">
+        <button type="submit">تحديث</button>
+    </form>
+{% else %}
+    الأدمن
+{% endif %}
+</td>
+</tr>
+{% endfor %}
+</table>
+<button onclick="location.href='/admin'">العودة للأدمن</button>
+</body>
+</html>

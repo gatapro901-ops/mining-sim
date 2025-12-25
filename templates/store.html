@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+<meta charset="UTF-8">
+<title>المتجر</title>
+<style>
+body { font-family: Arial; background:#222; color:#fff; text-align:center; }
+.container { max-width:800px; margin:auto; }
+.item-box { background:#333; padding:15px; margin:15px 0; border-radius:8px; }
+button { padding:8px 12px; background:#f39c12; color:#fff; border:none; border-radius:5px; cursor:pointer; }
+button:hover { background:#e67e22; }
+a { color:#1abc9c; text-decoration:none; }
+a:hover { text-decoration:underline; }
+.msg { color:red; font-weight:bold; }
+</style>
+</head>
+<body>
+
+<h2>المتجر</h2>
+<a href="{{ url_for('dashboard') }}">🏠 العودة للداشبورد</a>
+
+{% if msg %}
+<p class="msg">{{ msg }}</p>
+{% endif %}
+
+<div class="container">
+    {% for item in items %}
+    <div class="item-box">
+        <h3>{{ item.name }}</h3>
+        <p>السعر: {{ "%.8f"|format(item.price) }} ساتوشي</p>
+        <p>الإنتاج: 
+            {% if item.get('sat_per_30s') %} {{ item.sat_per_30s }} ساتوشي كل 30 ثانية
+            {% elif item.get('sat_per_26s') %} {{ item.sat_per_26s }} ساتوشي كل 26 ثانية
+            {% elif item.get('sat_per_22s') %} {{ item.sat_per_22s }} ساتوشي كل 22 ثانية
+            {% elif item.get('sat_per_19s') %} {{ item.sat_per_19s }} ساتوشي كل 19 ثانية
+            {% elif item.get('sat_per_15s') %} {{ item.sat_per_15s }} ساتوشي كل 15 ثانية
+            {% elif item.get('sat_per_11s') %} {{ item.sat_per_11s }} ساتوشي كل 11 ثانية
+            {% elif item.get('sat_per_8s') %} {{ item.sat_per_8s }} ساتوشي كل 8 ثواني
+            {% elif item.get('sat_per_4s') %} {{ item.sat_per_4s }} ساتوشي كل 4 ثواني
+            {% else %} 0 ساتوشي
+            {% endif %}
+        </p>
+        <a href="{{ url_for('buy_item', item_id=item.id) }}">
+            <button>شراء</button>
+        </a>
+    </div>
+    {% endfor %}
+</div>
+
+</body>
+</html>

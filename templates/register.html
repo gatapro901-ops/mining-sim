@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+<meta charset="UTF-8">
+<title>إنشاء حساب</title>
+<style>
+body { font-family: Arial; text-align:center; padding:30px; background:#111; color:#fff; transition: background 0.3s, color 0.3s;}
+input { padding:10px; margin:10px; border-radius:5px; border:none; width:250px; font-size:16px; }
+button { padding:12px 25px; margin:10px; border:none; border-radius:8px; cursor:pointer; font-size:16px;}
+.blue { background:#2196F3; color:white;}
+.red { color:red; font-weight:bold; }
+.show-pass { cursor:pointer; font-size:14px; margin-left:5px; color:cyan; }
+a { color:cyan; text-decoration:none; }
+</style>
+<script>
+function togglePassword() {
+  var x = document.getElementById("password");
+  if (x.type === "password") {
+    x.type = "text";
+  } else {
+    x.type = "password";
+  }
+}
+</script>
+</head>
+<body>
+
+<h2>إنشاء حساب</h2>
+
+{% if msg %}
+<p class="red">{{ msg }}</p>
+{% endif %}
+
+<form method="post">
+
+<input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+<input type="text" name="username" placeholder="اسم المستخدم" required><br>
+<input type="password" name="password" id="password" placeholder="كلمة المرور" required>
+<span class="show-pass" onclick="togglePassword()">👁️ إظهار</span><br>
+
+<button type="submit" class="blue">إنشاء حساب</button>
+</form>
+
+<p>لديك حساب؟ <a href="/login">تسجيل الدخول</a></p>
+
+</body>
+</html>

@@ -2,7 +2,7 @@
 from flask import Flask, render_template, request, redirect, url_for, session, jsonify, make_response, flash
 import json, os, random, time
 from datetime import datetime, timedelta
-import bcrypt
+#import bcrypt
 from flask_wtf import CSRFProtect
 
 app = Flask(__name__)

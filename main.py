@@ -1280,6 +1280,7 @@ def tasks_status():
 # =======================================================================
 
 # ---------- Run ----------
-if __name__=="__main__":
-    app.run(host="0.0.0.0", port=5000, debug=False)
-
+if __name__ == "__main__":
+    # بياخد البورت من السيرفر، ولو ملقاش بياخد 5000 تلقائي
+    port = int(os.environ.get("PORT", 5000))
+    app.run(host="0.0.0.0", port=port, debug=False)
